@@ -11,7 +11,7 @@ function App() {
   const [page, setPage] = useState(1);
   const { jobs, loading, error, hasNextPage } = useFetchJobs(params, page)
 
-  function handleChange(e) {
+  function handleParamChange(e) {
     const param = e.target.name
     const value = e.target.value
     setPage(1)
@@ -26,7 +26,7 @@ function App() {
   return (
     <Container className="my-4">
       <h1 className="mb-4">GitHub Jobs</h1>
-      <SearchForm params={params} onParamsChange={handleChange} />
+      <SearchForm params={params} onParamsChange={handleParamChange} />
       <JobsPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
       {loading && <h1>Loading....</h1>}
       {error && <h1>Error. Try Refreshing.</h1>}
